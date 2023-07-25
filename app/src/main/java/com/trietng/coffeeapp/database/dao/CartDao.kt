@@ -38,6 +38,10 @@ interface CartDao {
     @Query("update cart set quantity = :quantity where cart_id = :cartId")
     suspend fun setQuantity(cartId: Int, quantity: Int)
 
+    // Delete all items from the cart table
+    @Query("delete from cart")
+    suspend fun deleteAll()
+
 }
 
 data class CartExtra (

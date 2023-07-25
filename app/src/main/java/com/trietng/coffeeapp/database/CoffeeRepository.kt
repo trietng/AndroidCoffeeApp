@@ -63,6 +63,11 @@ class CoffeeRepository(
         cartDao.delete(cartId)
     }
 
+    // Delete all items from the cart table
+    suspend fun deleteAllCartItem() {
+        cartDao.deleteAll()
+    }
+
     // Find item from the cart table
     suspend fun findCartItem(coffeeId: Int, shot: Int, type: Int, size: Int, ice: Int): CartMinimal? {
         return cartDao.findItem(coffeeId, shot, type, size, ice)

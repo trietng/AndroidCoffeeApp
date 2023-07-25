@@ -14,6 +14,10 @@ interface VoucherDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(voucher: Voucher)
 
+    // Count the number of entries in the voucher table
+    @Query("select count(*) from voucher")
+    suspend fun count(): Int
+
     // Get all vouchers
     @Query("select * from voucher")
     fun getAllVoucher(): Flow<List<Voucher>>

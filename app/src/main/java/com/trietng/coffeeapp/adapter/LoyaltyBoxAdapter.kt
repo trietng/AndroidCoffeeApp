@@ -35,7 +35,7 @@ class LoyaltyBoxAdapter(context: Context, activity: Activity, numSelectedItem: I
     }
 
     override fun getItemCount(): Int {
-        return 15
+        return 8
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

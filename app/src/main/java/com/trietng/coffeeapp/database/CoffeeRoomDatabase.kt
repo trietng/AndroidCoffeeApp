@@ -49,18 +49,22 @@ abstract class CoffeeRoomDatabase : RoomDatabase() {
         coffeeDao().insert(Coffee(3, "Flat White", 3.50, "coffee_3"))
 
         // Insert fake data to the loyalty table, each of them has unique time_added
-        loyaltyDao().insert(Loyalty(0,"Americano", 12, "2023-02-15 08:45:23"))
-        loyaltyDao().insert(Loyalty(1,"Cappuccino", 15, "2023-01-10 13:20:30"))
-        loyaltyDao().insert(Loyalty(2,"Espresso", 10, "2023-03-25 22:15:45"))
-        loyaltyDao().insert(Loyalty(3,"Flat White", 12, "2023-02-15 08:45:23"))
-        loyaltyDao().insert(Loyalty(4,"Cappuccino", 15, "2023-01-10 13:20:30"))
-        loyaltyDao().insert(Loyalty(5,"Moca", 10, "2023-03-25 22:15:45"))
-        loyaltyDao().insert(Loyalty(6,"Latte", 12, "2023-02-15 08:45:23"))
-        loyaltyDao().insert(Loyalty(7,"Redeem", -25, "2023-01-10 13:20:30"))
+        if (loyaltyDao().count() == 0) {
+            loyaltyDao().insert(Loyalty(0,"Americano", 12, "2023-02-15 08:45:23"))
+            loyaltyDao().insert(Loyalty(1,"Cappuccino", 15, "2023-01-10 13:20:30"))
+            loyaltyDao().insert(Loyalty(2,"Espresso", 10, "2023-03-25 22:15:45"))
+            loyaltyDao().insert(Loyalty(3,"Flat White", 12, "2023-02-15 08:45:23"))
+            loyaltyDao().insert(Loyalty(4,"Cappuccino", 15, "2023-01-10 13:20:30"))
+            loyaltyDao().insert(Loyalty(5,"Moca", 10, "2023-03-25 22:15:45"))
+            loyaltyDao().insert(Loyalty(6,"Latte", 12, "2023-02-15 08:45:23"))
+            loyaltyDao().insert(Loyalty(7,"Redeem", -25, "2023-01-10 13:20:30"))
+        }
 
         // Insert fake data to the voucher table
-        voucherDao().insert(Voucher(0, 0, 1, "2024-02-15 00:00:00", 30))
-        voucherDao().insert(Voucher(1, 1, 1, "2024-02-16 00:00:00", 35))
+        if (voucherDao().count() == 0) {
+            voucherDao().insert(Voucher(0, 0, 1, "2024-02-15 00:00:00", 30))
+            voucherDao().insert(Voucher(1, 1, 1, "2024-02-16 00:00:00", 35))
+        }
     }
 
     companion object {

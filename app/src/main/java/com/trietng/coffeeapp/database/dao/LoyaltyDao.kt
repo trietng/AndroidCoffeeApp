@@ -14,6 +14,10 @@ interface LoyaltyDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(loyalty: Loyalty)
 
+    // Count the number of entries in the loyalty table
+    @Query("select count(*) from loyalty")
+    suspend fun count(): Int
+
     // Add a new entry to the loyalty table
     @Query("insert into loyalty (content, point, time_added) values (:content, :point, :timeAdded)")
     suspend fun insert(content: String, point: Int, timeAdded: String)

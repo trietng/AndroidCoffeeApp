@@ -1,5 +1,6 @@
 package com.trietng.coffeeapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -76,6 +77,13 @@ class CartActivity : AppCompatActivity() {
         })
         itemTouchHelper.attachToRecyclerView(cartRecyclerView)
 
+        // Add checkout onClickListener
+        buttonCheckout.setOnClickListener {
+            cartViewModel.deleteAll()
+            val intent = Intent(this, OrderSuccessActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 
     private val cartViewModel: CartViewModel by viewModels {

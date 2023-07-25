@@ -1,25 +1,19 @@
 package com.trietng.coffeeapp
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.KeyEvent
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.widget.doAfterTextChanged
-import androidx.core.widget.doOnTextChanged
-import androidx.fragment.app.viewModels
 import com.trietng.coffeeapp.database.viewmodel.UserViewModel
 import com.trietng.coffeeapp.database.viewmodel.UserViewModelFactory
-import org.w3c.dom.Text
 
 class ProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
-
 
         // New array of 4 EditText views
         val editText = arrayListOf<EditText>()

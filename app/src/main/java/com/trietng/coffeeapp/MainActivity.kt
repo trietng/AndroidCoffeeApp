@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
                 add<HomeFragment>(R.id.fragment_container)
             }
         }
+
         findViewById<BottomNavigationView>(R.id.bottom_nav_bar).setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.nav_item_home -> {
@@ -41,6 +42,21 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 else -> false
+            }
+        }
+
+        // Set fragment from intent
+        val fragmentId = intent.getIntExtra("main_activity_fragment_id", -1)
+        if (fragmentId != -1) {
+            when (fragmentId) {
+                R.id.nav_item_my_orders -> {
+                    supportFragmentManager.commit {
+                        setReorderingAllowed(true)
+                        replace(R.id.fragment_container, MyOrdersFragment())
+                    }
+                    findViewById<BottomNavigationView>(R.id.bottom_nav_bar).selectedItemId =
+                        R.id.nav_item_my_orders
+                }
             }
         }
     }

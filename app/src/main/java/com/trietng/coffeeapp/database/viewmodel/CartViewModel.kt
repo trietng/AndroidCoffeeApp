@@ -28,6 +28,11 @@ class CartViewModel(private val repository: CoffeeRepository) : ViewModel() {
         repository.deleteCartItem(cartId)
     }
 
+    // Delete all items from the cart table
+    fun deleteAll() = viewModelScope.launch {
+        repository.deleteAllCartItem()
+    }
+
     // Find item count from the cart table
     fun findItem(coffeeId: Int, shot: Int, type: Int, size: Int, ice: Int) = runBlocking {
         repository.findCartItem(coffeeId, shot, type, size, ice)
