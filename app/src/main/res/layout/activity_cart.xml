@@ -63,6 +63,7 @@
             android:textAppearance="@style/total_price_value"/>
 
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_checkout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"

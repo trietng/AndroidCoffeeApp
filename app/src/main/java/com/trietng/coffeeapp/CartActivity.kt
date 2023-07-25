@@ -2,6 +2,8 @@ package com.trietng.coffeeapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
+import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -27,15 +29,20 @@ class CartActivity : AppCompatActivity() {
             supportActionBar!!.setDisplayShowTitleEnabled(false)
             supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         }
+        // Get checkout button
+        val buttonCheckout = findViewById<Button>(R.id.button_checkout)
+
         // Total price value
-        val totalPriceValue = findViewById<android.widget.TextView>(R.id.total_price_value)
+        val totalPriceValue = findViewById<TextView>(R.id.total_price_value)
         cartViewModel.getTotalPrice.observe(this) {
             it.let {
                 if (it == null) {
                     totalPriceValue.text = "$0.00"
+                    buttonCheckout.isEnabled = false
                 }
                 else {
                     totalPriceValue.text = "$%.2f".format(it)
+                    buttonCheckout.isEnabled = true
                 }
             }
         }

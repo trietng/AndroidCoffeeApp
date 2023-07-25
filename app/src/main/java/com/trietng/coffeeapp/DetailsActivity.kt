@@ -89,6 +89,7 @@ class DetailsActivity : AppCompatActivity() {
                         cartViewModel.setQuantity(card.cartId, quantity + card.quantity)
                         val intent = Intent(this, CartActivity::class.java)
                         startActivity(intent)
+                        finish()
                     }
                     else {
                         Toast.makeText(this, "Number of coffee item in Cart must not exceed 5", Toast.LENGTH_LONG).show()
@@ -99,6 +100,7 @@ class DetailsActivity : AppCompatActivity() {
                 cartViewModel.insert(coffeeId, 0, 1, 1, 2, quantity)
                 val intent = Intent(this, CartActivity::class.java)
                 startActivity(intent)
+                finish()
             }
         }
 
