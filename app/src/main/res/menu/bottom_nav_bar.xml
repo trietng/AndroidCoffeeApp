@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_item_home"
+        android:icon="@drawable/ic_home"
+        android:title="@string/button_home" />
+
+    <item
+        android:id="@+id/nav_item_rewards"
+        android:title="@string/button_rewards"
+        android:icon="@drawable/ic_rewards" />
+
+    <item
+        android:id="@+id/nav_item_my_orders"
+        android:title="@string/button_order"
+        android:icon="@drawable/ic_order" />
+
+</menu>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/item_cart"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/box_rectangle_6"
+    android:paddingStart="10dp"
+    android:paddingEnd="5.8dp"
+    android:paddingVertical="17dp">
+    
+    <ImageView
+        android:id="@+id/item_cart_image"
+        android:layout_width="82dp"
+        android:layout_height="62dp"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:scaleType="centerInside"
+        android:adjustViewBounds="true"/>
+
+    <TextView
+        android:id="@+id/item_cart_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/item_cart_image"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="10.5dp"
+        android:textAppearance="@style/item_cart_name" />
+
+    <TextView
+        android:id="@+id/item_cart_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/item_cart_name"
+        android:layout_toStartOf="@+id/item_cart_price"
+        android:layout_toEndOf="@+id/item_cart_image"
+        android:layout_marginStart="10.5dp"
+        android:layout_marginEnd="16.6dp"
+        android:textAppearance="@style/item_cart_content" />
+
+    <TextView
+        android:id="@+id/item_cart_quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/item_cart_content"
+        android:layout_toEndOf="@+id/item_cart_image"
+        android:layout_marginStart="10.5dp"
+        android:textAppearance="@style/item_cart_quantity" />
+
+    <TextView
+        android:id="@+id/item_cart_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="5.8dp"
+        android:textAppearance="@style/points_small" />
+
+</RelativeLayout>

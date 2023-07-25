@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginTop="38dp"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/greeting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/greeting"
+            android:textAppearance="@style/greeting"
+            android:gravity="top"/>
+        <TextView
+            android:id="@+id/username_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/username_home"
+            android:textAppearance="@style/anderson"
+            android:gravity="center_horizontal|top"/>
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="25dp">
+        <ImageButton
+            android:id="@+id/button_profile"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/button_profile"/>
+        <FrameLayout
+            android:id="@+id/button_cart_home"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/button_profile"
+            android:layout_marginEnd="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/loyalty_box_home"
+        android:layout_alignParentStart="true"
+        android:layout_marginHorizontal="25dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="104dp"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/menu_box_outer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="@dimen/menu_box_margin_top"
+        android:background="@drawable/box_rectangle_2_primary">
+
+        <TextView
+            android:id="@+id/choose_your_coffee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="31dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/choose_your_coffee"
+            android:textAppearance="@style/choose_your_coffee"
+            android:gravity="top" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/menu_box_inner"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="72dp"
+            android:layout_marginBottom="106dp"
+            android:layout_marginHorizontal="25dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</RelativeLayout>

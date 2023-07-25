@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    tools:context=".OrderSuccessActivity">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="177dp"
+        android:layout_marginHorizontal="30dp">
+
+        <ImageView
+            android:id="@+id/icon_take_away"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/ic_take_away"/>
+
+        <TextView
+            android:id="@+id/order_success"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/icon_take_away"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="32dp"
+            android:text="@string/order_success"
+            android:textAppearance="@style/order_success"/>
+
+        <TextView
+            android:id="@+id/order_success_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/order_success"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="22dp"
+            android:text="@string/order_success_text"
+            android:textAppearance="@style/order_success_text"
+            android:textAlignment="center"
+            android:lineSpacingExtra="6sp"
+            android:translationY="-3.12sp"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_track_my_order"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            app:layout_constraintTop_toBottomOf="@+id/order_success_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="81dp"
+            android:text="@string/track_my_order"
+            android:textSize="14sp"
+            android:textColor="#FFFFFF"
+            android:textAllCaps="false"
+            android:background="@drawable/button_long"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</RelativeLayout>

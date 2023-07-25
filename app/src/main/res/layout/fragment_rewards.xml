@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="25dp">
+
+    <TextView
+        android:id="@+id/title_rewards"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/rewards"
+        android:textAppearance="@style/title"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="45dp"/>
+
+    <FrameLayout
+        android:id="@+id/loyalty_box_rewards"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title_rewards"
+        android:layout_marginTop="26dp"/>
+
+    <RelativeLayout
+        android:id="@+id/loyalty_box_points"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/loyalty_box_rewards"
+        android:layout_marginTop="16dp"
+        android:paddingVertical="25dp"
+        android:paddingStart="30dp"
+        android:paddingEnd="23dp"
+        android:background="@drawable/box_rectangle_1_primary">
+
+        <TextView
+            android:id="@+id/my_points"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/my_points"
+            android:textAppearance="@style/box_header"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"/>
+
+        <TextView
+            android:id="@+id/totalPoints"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/default_points"
+            android:textAppearance="@style/points"
+            android:layout_alignParentStart="true"
+            android:layout_below="@id/my_points"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="wrap_content"
+            android:layout_height="23dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:text="@string/redeem_drinks"
+            android:textAppearance="@style/redeem_drinks"
+            android:background="@drawable/box_rectangle_5"
+            android:textAllCaps="false"/>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/history_rewards_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/loyalty_box_points"
+        android:layout_marginTop="31dp"
+        android:layout_marginStart="6dp"
+        android:text="@string/history_rewards"
+        android:textAppearance="@style/box_header_secondary"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/history_rewards"
+        android:layout_width="match_parent"
+        android:layout_height="225dp"
+        android:layout_below="@id/history_rewards_header"
+        android:layout_marginHorizontal="6dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginBottom="6dp" />
+
+</RelativeLayout>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/item_coffee"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/item_coffee_padding"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/box_rectangle_3">
+
+    <ImageView
+        android:id="@+id/item_coffee_image"
+        android:layout_width="@dimen/item_coffee_image_width"
+        android:layout_height="85dp"
+        android:adjustViewBounds="true"/>
+
+    <TextView
+        android:id="@+id/item_coffee_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:letterSpacing="-0.01"
+        android:textColor="#001833"/>
+
+</LinearLayout>
