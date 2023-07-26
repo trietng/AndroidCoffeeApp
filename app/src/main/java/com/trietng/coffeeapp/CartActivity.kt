@@ -1,8 +1,10 @@
 package com.trietng.coffeeapp
 
 import android.content.Intent
+import android.graphics.Rect
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.activity.viewModels
@@ -59,6 +61,20 @@ class CartActivity : AppCompatActivity() {
                 cartListAdapter.submitList(it)
             }
         }
+        val itemDecoration = object: RecyclerView.ItemDecoration() {
+            override fun getItemOffsets(
+                outRect: Rect,
+                view: View,
+                parent: RecyclerView,
+                state: RecyclerView.State
+            ) {
+                val position = parent.getChildAdapterPosition(view)
+                if (position != 0) {
+                    outRect.top = resources.getDimension(R.dimen.item_cart_margin_top).toInt()
+                }
+            }
+        }
+        cartRecyclerView.addItemDecoration(itemDecoration)
 
         // Swipe left to delete functionality
         val itemTouchHelper = ItemTouchHelper(object: ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {

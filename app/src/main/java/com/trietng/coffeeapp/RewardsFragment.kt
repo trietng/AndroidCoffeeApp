@@ -25,11 +25,11 @@ class RewardsFragment : Fragment(R.layout.fragment_rewards) {
         historyRewardsRecyclerView.adapter = historyRewardsAdapter
         val totalPoints = view.findViewById<TextView>(R.id.totalPoints)
 
-        loyaltyViewModel.getSumPoint.observe(requireActivity()) { sumPoint ->
+        loyaltyViewModel.getSumPoint.observe(viewLifecycleOwner) { sumPoint ->
             sumPoint?.let { totalPoints.text = it.toString() }
         }
 
-        loyaltyViewModel.getRecent.observe(requireActivity()) { loyalties ->
+        loyaltyViewModel.getRecent.observe(viewLifecycleOwner) { loyalties ->
             loyalties?.let { historyRewardsAdapter.submitList(it) }
         }
     }

@@ -17,11 +17,22 @@ import com.trietng.coffeeapp.database.viewmodel.CoffeeViewModel
 import com.trietng.coffeeapp.database.viewmodel.CoffeeViewModelFactory
 import com.trietng.coffeeapp.database.viewmodel.UserViewModel
 import com.trietng.coffeeapp.database.viewmodel.UserViewModelFactory
+import java.time.LocalDateTime
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // Get current time
+        val currentTime = LocalDateTime.now().hour
+        val greeting = view.findViewById<TextView>(R.id.greeting)
+        when (currentTime) {
+            in 5..11 -> greeting.text = "Good morning"
+            in 12..17 -> greeting.text = "Good afternoon"
+            else -> greeting.text = "Good evening"
+        }
+
 
         // Set adapter for coffee selection
         val coffeeSelectionAdapter = CoffeeSelectionAdapter(requireActivity())
@@ -30,7 +41,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         val gridLayoutManager = GridLayoutManager(requireContext(), spanCount, GridLayoutManager.HORIZONTAL, false)
         coffeeSelectionRecyclerView.layoutManager = gridLayoutManager
         coffeeSelectionRecyclerView.adapter = coffeeSelectionAdapter
-        coffeeViewModel.getAllCoffee.observe(requireActivity()) {
+        coffeeViewModel.getAllCoffee.observe(viewLifecycleOwner) {
             it.let {
                 coffeeSelectionAdapter.submitList(it)
             }
@@ -65,7 +76,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
 
         val fullname = view.findViewById<TextView>(R.id.username_home)
-        userViewModel.getUser.observe(requireActivity()) {
+        userViewModel.getUser.observe(viewLifecycleOwner) {
             it.let {
                 fullname.text = it.fullname
             }
