@@ -11,6 +11,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         if (savedInstanceState == null) {
             supportFragmentManager.commit {
                 setReorderingAllowed(true)
@@ -21,23 +22,32 @@ class MainActivity : AppCompatActivity() {
         findViewById<BottomNavigationView>(R.id.bottom_nav_bar).setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.nav_item_home -> {
-                    supportFragmentManager.commit {
-                        setReorderingAllowed(true)
-                        replace(R.id.fragment_container, HomeFragment())
+                    if (currentFragmentId != R.id.nav_item_home) {
+                        supportFragmentManager.commit {
+                            setReorderingAllowed(true)
+                            replace(R.id.fragment_container, HomeFragment())
+                        }
+                        currentFragmentId = R.id.nav_item_home
                     }
                     true
                 }
                 R.id.nav_item_my_orders -> {
-                    supportFragmentManager.commit {
-                        setReorderingAllowed(true)
-                        replace(R.id.fragment_container, MyOrdersFragment())
+                    if (currentFragmentId != R.id.nav_item_my_orders) {
+                        supportFragmentManager.commit {
+                            setReorderingAllowed(true)
+                            replace(R.id.fragment_container, MyOrderFragment())
+                        }
+                        currentFragmentId = R.id.nav_item_my_orders
                     }
                     true
                 }
                 R.id.nav_item_rewards -> {
-                    supportFragmentManager.commit {
-                        setReorderingAllowed(true)
-                        replace(R.id.fragment_container, RewardsFragment())
+                    if (currentFragmentId != R.id.nav_item_rewards) {
+                        supportFragmentManager.commit {
+                            setReorderingAllowed(true)
+                            replace(R.id.fragment_container, RewardsFragment())
+                        }
+                        currentFragmentId = R.id.nav_item_rewards
                     }
                     true
                 }
@@ -52,12 +62,16 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_item_my_orders -> {
                     supportFragmentManager.commit {
                         setReorderingAllowed(true)
-                        replace(R.id.fragment_container, MyOrdersFragment())
+                        replace(R.id.fragment_container, MyOrderFragment())
                     }
                     findViewById<BottomNavigationView>(R.id.bottom_nav_bar).selectedItemId =
                         R.id.nav_item_my_orders
+                    currentFragmentId = R.id.nav_item_my_orders
                 }
             }
         }
     }
+
+    private var currentFragmentId = R.id.nav_item_home
+
 }

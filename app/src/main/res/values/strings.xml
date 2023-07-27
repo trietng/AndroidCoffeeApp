@@ -34,4 +34,6 @@
     <string name="total_price">Total Price</string>
     <string name="checkout">Checkout</string>
     <string name="my_order">My Order</string>
+    <string name="nav_item_ongoing">On going</string>
+    <string name="nav_item_history">History</string>
 </resources>

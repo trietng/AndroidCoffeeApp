@@ -8,6 +8,7 @@ import com.trietng.coffeeapp.database.dao.OrderDao
 import com.trietng.coffeeapp.database.dao.UserDao
 import com.trietng.coffeeapp.database.dao.VoucherDao
 import com.trietng.coffeeapp.database.entity.Coffee
+import com.trietng.coffeeapp.database.entity.Loyalty
 
 // Future proofing
 
@@ -22,6 +23,11 @@ class CoffeeRepository(
     // Wrap all methods from UserDao.kt inside this class
     // Get user
     val getUser = userDao.getUser()
+
+    // Get user fullname
+    suspend fun getUserFullname(): String {
+        return userDao.getFullname()
+    }
 
     // Update full name
     suspend fun updateUserFullname(fullname: String) {
@@ -44,8 +50,7 @@ class CoffeeRepository(
     }
 
     // Get all coffee
-    val getAllCoffeeItem = coffeeDao.getAllCoffee()
-
+    val getAllCoffeeItem= coffeeDao.getAllCoffee()
     // Wrap all methods from CartDao.kt inside this class
     // Add a new entry to the cart table
     suspend fun insertCartItem(coffee_id: Int, shot: Int, type: Int, size: Int, ice: Int, quantity: Int) {

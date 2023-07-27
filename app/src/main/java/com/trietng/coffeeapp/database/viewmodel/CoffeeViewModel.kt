@@ -10,7 +10,7 @@ import kotlinx.coroutines.runBlocking
 
 class CoffeeViewModel(private val repository: CoffeeRepository) : ViewModel() {
     // Get all coffee
-    val getAllCoffee : LiveData<List<Coffee>> = repository.getAllCoffeeItem.asLiveData()
+    val getAllCoffee: LiveData<List<Coffee>> = repository.getAllCoffeeItem.asLiveData()
 }
 
 class CoffeeViewModelFactory(private val repository: CoffeeRepository) : ViewModelProvider.Factory {

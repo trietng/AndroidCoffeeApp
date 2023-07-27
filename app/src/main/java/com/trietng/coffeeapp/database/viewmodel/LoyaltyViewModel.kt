@@ -18,7 +18,7 @@ class LoyaltyViewModel(private val repository: CoffeeRepository) : ViewModel() {
     // Get 10 most recent entries from the loyalty table
     val getRecent: LiveData<List<Loyalty>> = repository.getRecentLoyaltyItem.asLiveData()
 
-    val getSumPoint: LiveData<Int> = repository.getSumLoyaltyPoint.asLiveData()
+    val getSumPoint: LiveData<Int?> = repository.getSumLoyaltyPoint.asLiveData()
 }
 
 class LoyaltyViewModelFactory(private val repository: CoffeeRepository) : ViewModelProvider.Factory {

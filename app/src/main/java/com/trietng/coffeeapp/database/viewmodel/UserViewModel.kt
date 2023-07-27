@@ -1,4 +1,5 @@
 package com.trietng.coffeeapp.database.viewmodel
+import android.widget.TextView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
@@ -11,6 +12,12 @@ class UserViewModel(private val repository: CoffeeRepository) : ViewModel() {
 
     // Get user
     val getUser: LiveData<User> = repository.getUser.asLiveData()
+
+    // Get user fullname
+    fun getUserFullname(fullnameTextView: TextView) = viewModelScope.launch {
+        val fullname = repository.getUserFullname()
+        fullnameTextView.text = fullname.toString()
+    }
 
     // Update full name
     fun updateFullname(fullname: String) = viewModelScope.launch {

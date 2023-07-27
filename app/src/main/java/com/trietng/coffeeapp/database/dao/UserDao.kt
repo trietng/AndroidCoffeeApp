@@ -16,6 +16,10 @@ interface UserDao {
     @Query("select * from user")
     fun getUser(): Flow<User>
 
+    // Get username
+    @Query("select fullname from user")
+    suspend fun getFullname(): String
+
     // Update full name
     @Query("update user set fullname = :fullname")
     suspend fun updateFullname(fullname: String)
