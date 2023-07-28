@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/item_voucher"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/item_voucher_image"
+        android:layout_width="82dp"
+        android:layout_height="61dp"
+        android:scaleType="centerInside"
+        android:adjustViewBounds="true"
+        android:layout_alignParentStart="true"/>
+
+    <TextView
+        android:id="@+id/item_voucher_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/item_voucher_image"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="7dp"
+        android:layout_marginStart="16dp"
+        android:textAppearance="@style/box_header_secondary"/>
+
+    <TextView
+        android:id="@+id/item_voucher_expiration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/item_voucher_image"
+        android:layout_below="@id/item_voucher_name"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="7dp"
+        android:textAppearance="@style/item_voucher_expiration"/>
+    
+    <com.trietng.coffeeapp.view.ButtonRedeem
+        android:id="@+id/item_voucher_redeem"
+        android:layout_width="76dp"
+        android:layout_height="32dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/box_rectangle_7"
+        android:textAppearance="@style/points_mini"/>
+
+</RelativeLayout>

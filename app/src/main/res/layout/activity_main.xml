@@ -16,10 +16,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:menu="@menu/bottom_nav_bar"
-        android:background="@drawable/box_rectangle_3"
+        android:background="@drawable/box_rectangle_8"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="25dp"
-        android:layout_marginHorizontal="25dp"/>
+        android:layout_marginBottom="23dp"
+        android:layout_marginHorizontal="24dp"
+        app:itemActiveIndicatorStyle="@color/blue"
+        app:itemIconTint="@drawable/bottom_nav_bar"
+        app:itemTextColor="@drawable/bottom_nav_bar"/>
 
 </RelativeLayout>

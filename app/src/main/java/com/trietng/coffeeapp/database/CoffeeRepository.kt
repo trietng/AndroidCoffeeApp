@@ -7,8 +7,6 @@ import com.trietng.coffeeapp.database.dao.LoyaltyDao
 import com.trietng.coffeeapp.database.dao.OrderDao
 import com.trietng.coffeeapp.database.dao.UserDao
 import com.trietng.coffeeapp.database.dao.VoucherDao
-import com.trietng.coffeeapp.database.entity.Coffee
-import com.trietng.coffeeapp.database.entity.Loyalty
 
 // Future proofing
 
@@ -25,8 +23,25 @@ class CoffeeRepository(
     val getUser = userDao.getUser()
 
     // Get user fullname
-    suspend fun getUserFullname(): String {
-        return userDao.getFullname()
+    val getUserFullname = userDao.getFullname()
+
+    suspend fun getUserAddress(): String {
+        return userDao.getAddress()
+    }
+
+    // Increase number of loyalty cup by 1
+    suspend fun updateNumLoyaltyCup(numLoyaltyCup: Int) {
+        userDao.updateNumLoyaltyCup(numLoyaltyCup)
+    }
+
+    // Reset number of loyalty cup to 0
+    suspend fun resetNumLoyaltyCup() {
+        userDao.resetNumLoyaltyCup()
+    }
+
+    // Get current number of loyalty cup
+    suspend fun getCurrentNumLoyaltyCup(): Int {
+        return userDao.getCurrentNumLoyaltyCup()
     }
 
     // Update full name
@@ -53,9 +68,12 @@ class CoffeeRepository(
     val getAllCoffeeItem= coffeeDao.getAllCoffee()
     // Wrap all methods from CartDao.kt inside this class
     // Add a new entry to the cart table
-    suspend fun insertCartItem(coffee_id: Int, shot: Int, type: Int, size: Int, ice: Int, quantity: Int) {
-        cartDao.insert(coffee_id, shot, type, size, ice, quantity)
+    suspend fun insertCartItem(coffeeId: Int, shot: Int, type: Int, size: Int, ice: Int, quantity: Int, paymentStatus: Int) {
+        cartDao.insert(coffeeId, shot, type, size, ice, quantity, paymentStatus)
     }
+
+    // Get total quantity
+    val getCartTotalQuantity = cartDao.getTotalQuantity()
 
     // Get total point
     val getCartTotalPrice = cartDao.getTotalPrice()
@@ -88,9 +106,14 @@ class CoffeeRepository(
         orderDao.setOrderCompleted(orderId)
     }
 
+    // Get total quantity of an order
+    suspend fun getOrderTotalQuantity(orderId: Int): Int {
+        return orderDao.getTotalQuantity(orderId)
+    }
+
     // Insert a new order
-    suspend fun insertOrderItem(content: String, totalPrice: Double, orderedTime: String, status: Int, address: String) {
-        orderDao.insert(content, totalPrice, orderedTime, status, address)
+    suspend fun insertOrderItem(content: String, totalQuantity: Int, totalPrice: Double, orderedTime: String, status: Int, address: String) {
+        orderDao.insert(content, totalQuantity, totalPrice, orderedTime, status, address)
     }
 
     // Get 10 most recent completed order with their total price
@@ -108,6 +131,11 @@ class CoffeeRepository(
 
     // Get sum of points from the loyalty table
     val getSumLoyaltyPoint = loyaltyDao.getSumPoint()
+
+    // Get current sum of points from the loyalty table
+    suspend fun getCurrentSumLoyaltyPoint(): Int? {
+        return loyaltyDao.getCurrentSumPoint()
+    }
 
     // Get all vouchers
     val getAllVoucher = voucherDao.getAllVoucher()

@@ -7,12 +7,16 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
+import androidx.activity.viewModels
 import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.trietng.coffeeapp.CoffeeApplication
 import com.trietng.coffeeapp.R
 import com.trietng.coffeeapp.database.dao.CartExtra
+import com.trietng.coffeeapp.database.viewmodel.VoucherViewModel
+import com.trietng.coffeeapp.database.viewmodel.VoucherViewModelFactory
 
 class CartListAdapter(activity: Activity) :
     ListAdapter<CartExtra, CartListAdapter.CartViewHolder>(CartDiff()) {
@@ -33,7 +37,11 @@ class CartListAdapter(activity: Activity) :
         val imageId = activity.resources.getIdentifier(cart.imageFilename, "drawable", activity.packageName)
         val imageDrawable = ResourcesCompat.getDrawable(activity.resources, imageId, null)
         holder.itemCart.findViewById<ImageView>(R.id.item_cart_image).setImageDrawable(imageDrawable)
-        holder.itemCart.findViewById<TextView>(R.id.item_cart_name).text = cart.name
+        holder.itemCart.findViewById<TextView>(R.id.item_cart_name).text =
+        cart.name + when(cart.paymentStatus) {
+            0 -> " (free)"
+            else -> ""
+        }
         val content =
             StringBuilder().append(
                 when(cart.shot) {
@@ -62,7 +70,7 @@ class CartListAdapter(activity: Activity) :
         holder.itemCart.findViewById<TextView>(R.id.item_cart_content).text = content
         holder.price = cart.price
         holder.itemCart.findViewById<TextView>(R.id.item_cart_price).text = "$%.2f".format(holder.price)
-        holder.itemCart.findViewById<TextView>(R.id.item_cart_quantity).text = "${cart.quantity}"
+        holder.itemCart.findViewById<TextView>(R.id.item_cart_quantity).text = "x${cart.quantity}"
     }
 
     class CartViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -85,8 +93,7 @@ class CartListAdapter(activity: Activity) :
         }
 
         override fun areContentsTheSame(oldItem: CartExtra, newItem: CartExtra): Boolean {
-            return oldItem.hashCode() == newItem.hashCode()
+            return oldItem.cartId == newItem.cartId
         }
     }
-
 }

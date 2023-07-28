@@ -1,6 +1,8 @@
 package com.trietng.coffeeapp
 
+import android.os.Build
 import android.os.Bundle
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
 import androidx.fragment.app.add
@@ -18,8 +20,9 @@ class MainActivity : AppCompatActivity() {
                 add<HomeFragment>(R.id.fragment_container)
             }
         }
+        val bottomNavBar = findViewById<BottomNavigationView>(R.id.bottom_nav_bar)
 
-        findViewById<BottomNavigationView>(R.id.bottom_nav_bar).setOnItemSelectedListener {
+        bottomNavBar.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.nav_item_home -> {
                     if (currentFragmentId != R.id.nav_item_home) {
@@ -64,7 +67,7 @@ class MainActivity : AppCompatActivity() {
                         setReorderingAllowed(true)
                         replace(R.id.fragment_container, MyOrderFragment())
                     }
-                    findViewById<BottomNavigationView>(R.id.bottom_nav_bar).selectedItemId =
+                    bottomNavBar.selectedItemId =
                         R.id.nav_item_my_orders
                     currentFragmentId = R.id.nav_item_my_orders
                 }

@@ -48,8 +48,7 @@ class HistoryRewardsAdapter :
         }
 
         override fun areContentsTheSame(oldItem: Loyalty, newItem: Loyalty): Boolean {
-            return oldItem.content == newItem.content &&
-            oldItem.timeAdded == newItem.timeAdded
+            return oldItem.loyaltyId == newItem.loyaltyId
         }
     }
 }

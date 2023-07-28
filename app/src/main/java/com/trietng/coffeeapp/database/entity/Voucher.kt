@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "voucher")
 class Voucher (
-    @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "voucher_id") val voucherId: Int,
+    @PrimaryKey @ColumnInfo(name = "voucher_id") val voucherId: Int,
     @ColumnInfo(name = "coffee_id") val coffeeId: Int,
     @ColumnInfo(name = "quantity") val quantity: Int,
     @ColumnInfo(name = "expiration_time") val expirationTime: String,

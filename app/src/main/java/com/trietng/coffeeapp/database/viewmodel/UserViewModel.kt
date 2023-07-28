@@ -1,5 +1,4 @@
 package com.trietng.coffeeapp.database.viewmodel
-import android.widget.TextView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
@@ -14,9 +13,26 @@ class UserViewModel(private val repository: CoffeeRepository) : ViewModel() {
     val getUser: LiveData<User> = repository.getUser.asLiveData()
 
     // Get user fullname
-    fun getUserFullname(fullnameTextView: TextView) = viewModelScope.launch {
-        val fullname = repository.getUserFullname()
-        fullnameTextView.text = fullname.toString()
+
+    val getFullname: LiveData<String> = repository.getUserFullname.asLiveData()
+
+    // Get current number of loyalty cup
+    suspend fun getCurrentNumLoyaltyCup(): Int {
+        return repository.getCurrentNumLoyaltyCup()
+    }
+
+    suspend fun getAddress(): String {
+        return repository.getUserAddress()
+    }
+
+    // Increase number of loyalty cup by 1
+    fun updateNumLoyaltyCup(numLoyaltyCup: Int) = viewModelScope.launch {
+        repository.updateNumLoyaltyCup(numLoyaltyCup)
+    }
+
+    // Reset number of loyalty cup to 0
+    fun resetNumLoyaltyCup() = viewModelScope.launch {
+        repository.resetNumLoyaltyCup()
     }
 
     // Update full name

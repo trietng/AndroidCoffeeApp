@@ -12,5 +12,6 @@ class Cart (
     @ColumnInfo(name = "type") val type: Int, // 0: hot, 1: iced
     @ColumnInfo(name = "size") val size: Int,// 0: small, 1: medium, 2: large
     @ColumnInfo(name = "ice") val ice: Int, // 0: no ice, 1: less ice, 2: normal ice, 3: full ice
-    @ColumnInfo(name = "quantity") val quantity: Int
+    @ColumnInfo(name = "quantity") val quantity: Int,
+    @ColumnInfo(name = "payment_status") val name: Int, // 0: voucher applied, 1: voucher not applied
 )

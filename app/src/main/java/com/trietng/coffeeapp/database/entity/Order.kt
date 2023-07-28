@@ -10,6 +10,7 @@ class Order (
     // I don't want to deal with complex relationships, so I just store the content of the order
     // Storage inefficient, but it's fine for now
     @ColumnInfo(name = "content") val content: String,
+    @ColumnInfo(name = "total_quantity") val totalQuantity: Int,
     @ColumnInfo(name = "total_price") val totalPrice: Double,
     @ColumnInfo(name = "ordered_time") val orderedTime: String,
     @ColumnInfo(name = "status") val status: Int, // 0: on-going, 1: completed

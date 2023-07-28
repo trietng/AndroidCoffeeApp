@@ -37,7 +37,8 @@ abstract class CoffeeRoomDatabase : RoomDatabase() {
                 "Dinh Triet",
                 "0123456789",
                 "triet@email.com",
-                "227 Nguyen Van Cu Street, District 5, Ho Chi Minh City")
+                "227 Nguyen Van Cu Street, District 5, Ho Chi Minh City",
+                 0)
         )
 
         // coffeeDao and loyaltyDao can be optimized with a count check
@@ -47,6 +48,8 @@ abstract class CoffeeRoomDatabase : RoomDatabase() {
         coffeeDao().insert(Coffee(1, "Cappuccino", 3.00, "coffee_1"))
         coffeeDao().insert(Coffee(2, "Mocha", 2.50, "coffee_2"))
         coffeeDao().insert(Coffee(3, "Flat White", 3.50, "coffee_3"))
+        coffeeDao().insert(Coffee(4, "Milk Tea", 6.00, "coffee_4"))
+        coffeeDao().insert(Coffee(5, "Espresso", 3.00, "coffee_5"))
 
         // Insert fake data to the loyalty table, each of them has unique time_added
         if (loyaltyDao().count() == 0) {

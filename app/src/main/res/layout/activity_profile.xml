@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     tools:context=".ProfileActivity">
 
     <TextView
@@ -51,7 +50,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/profile_fullname"
-                    android:textAppearance="@style/profile_attribute"/>
+                    android:textAppearance="@style/item_attribute"/>
 
                 <EditText
                     android:id="@+id/edit_text_fullname"
@@ -100,7 +99,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/profile_phone"
-                    android:textAppearance="@style/profile_attribute"/>
+                    android:textAppearance="@style/item_attribute"/>
 
                 <EditText
                     android:id="@+id/edit_text_phone"
@@ -150,7 +149,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/profile_email"
-                    android:textAppearance="@style/profile_attribute"/>
+                    android:textAppearance="@style/item_attribute"/>
 
                 <EditText
                     android:id="@+id/edit_text_email"
@@ -199,7 +198,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/profile_email"
-                    android:textAppearance="@style/profile_attribute"/>
+                    android:textAppearance="@style/item_attribute"/>
 
                 <EditText
                     android:id="@+id/edit_text_address"

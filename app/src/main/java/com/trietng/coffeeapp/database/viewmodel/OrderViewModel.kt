@@ -18,13 +18,18 @@ class OrderViewModel(private val repository: CoffeeRepository) : ViewModel() {
     }
 
     // Insert new order to the order table
-    fun insert(content: String, totalPrice: Double, orderedTime: String, status: Int, address: String) = viewModelScope.launch {
-        repository.insertOrderItem(content, totalPrice, orderedTime, status, address)
+    fun insert(content: String, totalQuantity: Int, totalPrice: Double, orderedTime: String, status: Int, address: String) = viewModelScope.launch {
+        repository.insertOrderItem(content, totalQuantity, totalPrice, orderedTime, status, address)
     }
 
     val getCompletedOrder: LiveData<List<Order>> = repository.getCompletedOrder.asLiveData()
 
-    val getOnGhingOrder: LiveData<List<Order>> = repository.getOngoingOrder.asLiveData()
+    val getOngoingOrder: LiveData<List<Order>> = repository.getOngoingOrder.asLiveData()
+
+    // Get total quantity of an order
+    suspend fun getTotalQuantity(orderId: Int) : Int {
+        return repository.getOrderTotalQuantity(orderId)
+    }
 }
 
 class OrderViewModelFactory(private val repository: CoffeeRepository) : ViewModelProvider.Factory {

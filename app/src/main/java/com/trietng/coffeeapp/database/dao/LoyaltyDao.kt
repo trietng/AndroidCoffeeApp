@@ -30,6 +30,9 @@ interface LoyaltyDao {
     @Query("select sum(point) from loyalty")
     fun getSumPoint(): Flow<Int?>
 
+    @Query("select sum(point) from loyalty")
+    suspend fun getCurrentSumPoint(): Int?
+
     // Delete all entries from the loyalty table
     @Query("delete from loyalty")
     suspend fun deleteAll()

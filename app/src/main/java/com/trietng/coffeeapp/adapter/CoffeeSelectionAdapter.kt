@@ -67,7 +67,7 @@ class CoffeeSelectionAdapter(activity: Activity) :
         }
 
         override fun areContentsTheSame(oldItem: Coffee, newItem: Coffee): Boolean {
-            return oldItem.name == newItem.name
+            return oldItem.coffeeId == newItem.coffeeId
         }
     }
 

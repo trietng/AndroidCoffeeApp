@@ -76,9 +76,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
 
         val fullname = view.findViewById<TextView>(R.id.username_home)
-        userViewModel.getUser.observe(viewLifecycleOwner) {
+        userViewModel.getFullname.observe(viewLifecycleOwner) {
             it.let {
-                fullname.text = it.fullname
+                fullname.text = it
             }
         }
     }

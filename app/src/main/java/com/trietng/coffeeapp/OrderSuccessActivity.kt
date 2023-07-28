@@ -16,6 +16,7 @@ class OrderSuccessActivity : AppCompatActivity() {
             newIntent.putExtra("main_activity_fragment_id", R.id.nav_item_my_orders)
             // Start new activity
             startActivity(newIntent)
+            finish()
         }
     }
 }

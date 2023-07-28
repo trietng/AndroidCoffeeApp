@@ -13,8 +13,8 @@ import kotlinx.coroutines.runBlocking
 
 class CartViewModel(private val repository: CoffeeRepository) : ViewModel() {
     // Insert a new coffee to the coffee table
-    fun insert(coffee_id: Int, shot: Int, cup_type: Int, size: Int, ice: Int, quantity: Int) = viewModelScope.launch {
-        repository.insertCartItem(coffee_id, shot, cup_type, size, ice, quantity)
+    fun insert(coffeeId: Int, shot: Int, cup_type: Int, size: Int, ice: Int, quantity: Int, paymentStatus: Int) = viewModelScope.launch {
+        repository.insertCartItem(coffeeId, shot, cup_type, size, ice, quantity, paymentStatus)
     }
 
     // Get total price
@@ -42,6 +42,9 @@ class CartViewModel(private val repository: CoffeeRepository) : ViewModel() {
     fun setQuantity(cartId: Int, quantity: Int) = viewModelScope.launch {
         repository.setCartItemQuantity(cartId, quantity)
     }
+
+    // Get total quantity
+    val getTotalQuantity: LiveData<Int?> = repository.getCartTotalQuantity.asLiveData()
 }
 
 class CartViewModelFactory(private val repository: CoffeeRepository) : ViewModelProvider.Factory {

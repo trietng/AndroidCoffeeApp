@@ -2,8 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    android:paddingHorizontal="25dp">
+    android:paddingHorizontal="25dp"
+    android:layout_marginBottom="99dp">
 
     <TextView
         android:id="@+id/title_rewards"
@@ -52,6 +52,7 @@
             android:layout_below="@id/my_points"/>
 
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/redeem_drinks"
             android:layout_width="wrap_content"
             android:layout_height="23dp"
             android:layout_alignParentEnd="true"
@@ -77,10 +78,6 @@
         android:layout_width="match_parent"
         android:layout_height="225dp"
         android:layout_below="@id/history_rewards_header"
-        android:layout_marginHorizontal="6dp"
-        android:layout_marginStart="6dp"
-        android:layout_marginTop="6dp"
-        android:layout_marginEnd="6dp"
-        android:layout_marginBottom="6dp" />
+        android:layout_marginHorizontal="6dp" />
 
 </RelativeLayout>

@@ -97,7 +97,7 @@ class DetailsActivity : AppCompatActivity() {
                 }
             }
             else {
-                cartViewModel.insert(coffeeId, 0, 1, 1, 2, quantity)
+                cartViewModel.insert(coffeeId, 0, 1, 1, 2, quantity, 1)
                 val intent = Intent(this, CartActivity::class.java)
                 startActivity(intent)
                 finish()

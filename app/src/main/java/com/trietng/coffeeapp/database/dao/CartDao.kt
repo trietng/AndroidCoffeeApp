@@ -3,7 +3,6 @@ package com.trietng.coffeeapp.database.dao
 import androidx.room.ColumnInfo
 import androidx.room.Dao
 import androidx.room.Query
-import com.trietng.coffeeapp.database.entity.Cart
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -11,15 +10,15 @@ interface CartDao {
 
     // Conflict check is guaranteed else where
     // Add a new entry to the cart table
-    @Query("insert into cart (coffee_id, shot, type, size, ice, quantity) values (:coffeeId, :shot, :type, :size, :ice, :quantity)")
-    suspend fun insert(coffeeId: Int, shot: Int, type: Int, size: Int, ice: Int, quantity: Int)
+    @Query("insert into cart (coffee_id, shot, type, size, ice, quantity, payment_status) values (:coffeeId, :shot, :type, :size, :ice, :quantity, :paymentStatus)")
+    suspend fun insert(coffeeId: Int, shot: Int, type: Int, size: Int, ice: Int, quantity: Int, paymentStatus: Int)
 
     // Get all entries from the cart table
-    @Query("select *, coffee.name, coffee.image_filename, cart.quantity * (coffee.price + cart.shot + 0.5 * cart.type + 0.5 * cart.size) as price from cart left join coffee on cart.coffee_id = coffee.coffee_id")
+    @Query("select *, coffee.name, coffee.image_filename, cart.payment_status * cart.quantity * (coffee.price + cart.shot + 0.5 * cart.type + 0.5 * cart.size) as price from cart left join coffee on cart.coffee_id = coffee.coffee_id")
     fun getAllCart(): Flow<List<CartExtra>>
 
     // Get total price
-    @Query("select sum(cart.quantity * (coffee.price + cart.shot + 0.5 * cart.type + 0.5 * cart.size)) from cart left join coffee on cart.coffee_id = coffee.coffee_id")
+    @Query("select sum(cart.payment_status * cart.quantity * (coffee.price + cart.shot + 0.5 * cart.type + 0.5 * cart.size)) from cart left join coffee on cart.coffee_id = coffee.coffee_id")
     fun getTotalPrice(): Flow<Double?>
 
     // Get total quantity
@@ -31,7 +30,7 @@ interface CartDao {
     suspend fun delete(cartId: Int)
 
     // Find item from the cart table
-    @Query("select cart_id, quantity from cart where coffee_id = :coffeeId and shot = :shot and type = :type and size = :size and ice = :ice")
+    @Query("select cart_id, quantity from cart where coffee_id = :coffeeId and shot = :shot and type = :type and size = :size and ice = :ice and payment_status = 1")
     suspend fun findItem(coffeeId: Int, shot: Int, type: Int, size: Int, ice: Int): CartMinimal?
 
     // Set quantity by cartId
@@ -52,6 +51,7 @@ data class CartExtra (
     @ColumnInfo(name = "size") val size: Int,// 0: small, 1: medium, 2: large
     @ColumnInfo(name = "ice") val ice: Int, // 0: no ice, 1: less ice, 2: normal ice, 3: full ice
     @ColumnInfo(name = "quantity") val quantity: Int,
+    @ColumnInfo(name = "payment_status") val paymentStatus: Int,
     @ColumnInfo(name = "name") val name: String,
     @ColumnInfo(name = "image_filename") val imageFilename: String,
     @ColumnInfo(name = "price") val price: Double

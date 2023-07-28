@@ -10,5 +10,6 @@ class User (
     @ColumnInfo(name = "fullname") val fullname: String,
     @ColumnInfo(name = "phone") val phone: String,
     @ColumnInfo(name = "email") val email: String,
-    @ColumnInfo(name = "address") val address: String
+    @ColumnInfo(name = "address") val address: String,
+    @ColumnInfo(name = "num_loyalty_cup") val point: Int
 )

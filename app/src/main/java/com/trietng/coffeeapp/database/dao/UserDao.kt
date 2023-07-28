@@ -12,13 +12,29 @@ interface UserDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(user: User)
 
+    // Increase number of loyalty cup by 1
+    @Query("update user set num_loyalty_cup = :numLoyaltyCup")
+    suspend fun updateNumLoyaltyCup(numLoyaltyCup: Int)
+
+    // Reset number of loyalty cup to 0
+    @Query("update user set num_loyalty_cup = 0")
+    suspend fun resetNumLoyaltyCup()
+
     // Get user
     @Query("select * from user")
     fun getUser(): Flow<User>
 
-    // Get username
+    // Get user fullname
     @Query("select fullname from user")
-    suspend fun getFullname(): String
+    fun getFullname(): Flow<String>
+
+    // Get current number of loyalty cup
+    @Query("select num_loyalty_cup from user")
+    suspend fun getCurrentNumLoyaltyCup(): Int
+
+    // Get address
+    @Query("select address from user")
+    suspend fun getAddress(): String
 
     // Update full name
     @Query("update user set fullname = :fullname")
