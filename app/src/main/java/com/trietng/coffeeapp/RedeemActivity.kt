@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.Rect
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -56,13 +57,16 @@ class RedeemActivity : AppCompatActivity() {
                     0,
                     1,
                     1,
-                    2,
+                    1,
                     button.voucherExtra!!.quantity,
                     0
                 )
                 val intent = Intent(this, CartActivity::class.java)
                 startActivity(intent)
                 finish()
+            }
+            else {
+                Toast.makeText(applicationContext, "Not enough loyalty point", Toast.LENGTH_SHORT).show()
             }
         }
         voucherRecyclerView.layoutManager = linearLayoutManager

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_ice_less"
+        android:title="@string/ice_less"/>
+
+    <item
+        android:id="@+id/menu_ice_normal"
+        android:title="@string/ice_normal"/>
+
+    <item
+        android:id="@+id/menu_ice_more"
+        android:title="@string/ice_more"/>
+
+</menu>

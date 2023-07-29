@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="menu_box_margin_top">264dp</dimen>
-    <dimen name="item_coffee_image_width">114dp</dimen>
+    <dimen name="item_coffee_image_height">85dp</dimen>
     <dimen name="item_coffee_padding">22dp</dimen>
     <dimen name="item_cart_margin_top">20dp</dimen>
     <dimen name="item_voucher_margin_top">40dp</dimen>

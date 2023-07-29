@@ -129,4 +129,18 @@
         <item name="android:textColor">#FFFFFF</item>
     </style>
 
+    <style name="item_attribute_menu_item_active">
+        <item name="android:textSize">12sp</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:textColor">#001833</item>
+    </style>
+
+    <style name="item_attribute_menu_item_inactive">
+        <item name="android:textSize">12sp</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:textColor">#D8D8D8</item>
+    </style>
+
+
+
 </resources>

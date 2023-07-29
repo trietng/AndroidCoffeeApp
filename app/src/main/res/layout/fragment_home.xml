@@ -62,7 +62,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="104dp"/>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
         android:id="@+id/menu_box_outer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -74,8 +74,8 @@
             android:id="@+id/choose_your_coffee"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
             android:layout_marginStart="31dp"
             android:layout_marginTop="24dp"
             android:text="@string/choose_your_coffee"
@@ -84,16 +84,14 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/menu_box_inner"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_width="match_parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginTop="72dp"
-            android:layout_marginBottom="106dp"
-            android:layout_marginHorizontal="25dp" />
+            android:layout_marginBottom="100dp"
+            android:layout_marginHorizontal="25dp">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </RelativeLayout>
 
 </RelativeLayout>

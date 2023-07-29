@@ -51,7 +51,7 @@
             android:adjustViewBounds="true"
             android:background="@color/white"/>
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
@@ -60,62 +60,234 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="16dp"
             android:layout_marginStart="10dp"
-            android:layout_marginEnd="6dp"
-            android:orientation="vertical">
+            android:layout_marginEnd="6dp">
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="62dp"
-                android:gravity="center_vertical">
+                android:layout_height="wrap_content"
 
-                <TextView
-                    android:id="@+id/text_coffee_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:textAppearance="@style/coffee_attribute"/>
+                android:orientation="vertical">
 
-                <LinearLayout
-                    android:layout_width="75dp"
-                    android:layout_height="30dp"
-                    android:layout_alignParentEnd="true"
-                    android:background="@drawable/box_rectangle_4"
-                    android:orientation="horizontal">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="62dp"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/bottom_border">
 
                     <TextView
-                        android:id="@+id/button_decrease_quantity"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="@string/minus"
-                        android:textAlignment="center"
-                        android:padding="5dp"
-                        android:textAppearance="@style/coffee_attribute" />
+                        android:id="@+id/text_coffee_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:textAppearance="@style/coffee_attribute"/>
+
+                    <LinearLayout
+                        android:layout_width="75dp"
+                        android:layout_height="30dp"
+                        android:layout_alignParentEnd="true"
+                        android:background="@drawable/box_rectangle_4"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/button_decrease_quantity"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="@string/minus"
+                            android:textAlignment="center"
+                            android:padding="5dp"
+                            android:textAppearance="@style/coffee_attribute" />
+
+                        <TextView
+                            android:id="@+id/text_quantity"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:textAlignment="center"
+                            android:padding="5dp"
+                            android:textAppearance="@style/coffee_attribute" />
+
+                        <TextView
+                            android:id="@+id/button_increase_quantity"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="@string/plus"
+                            android:textAlignment="center"
+                            android:padding="5dp"
+                            android:textAppearance="@style/coffee_attribute" />
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="62dp"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/bottom_border">
 
                     <TextView
-                        android:id="@+id/text_quantity"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:textAlignment="center"
-                        android:padding="5dp"
-                        android:textAppearance="@style/coffee_attribute" />
+                        android:id="@+id/detail_text_coffee_shot"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:textAppearance="@style/coffee_attribute"
+                        android:text="@string/detail_shot"/>
+
+                    <com.google.android.material.bottomnavigation.BottomNavigationView
+                        android:id="@+id/detail_selector_shot"
+                        android:layout_width="151dp"
+                        android:layout_height="30dp"
+                        android:layout_alignParentEnd="true"
+                        app:menu="@menu/menu_shot"
+                        android:background="@drawable/attribute_selector"
+                        app:itemTextAppearanceActive="@style/item_attribute_menu_item_active"
+                        app:itemTextAppearanceInactive="@style/item_attribute_menu_item_inactive"
+                        app:itemPaddingTop="10dp"
+                        app:itemPaddingBottom="10dp"
+                        app:itemActiveIndicatorStyle="@color/blue">
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:background="@drawable/attribute_divider"/>
+
+                    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="62dp"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/bottom_border">
 
                     <TextView
-                        android:id="@+id/button_increase_quantity"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="@string/plus"
-                        android:textAlignment="center"
-                        android:padding="5dp"
-                        android:textAppearance="@style/coffee_attribute" />
+                        android:id="@+id/detail_text_coffee_select"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:textAppearance="@style/coffee_attribute"
+                        android:text="@string/detail_select"/>
 
-                </LinearLayout>
+                    <com.google.android.material.bottomnavigation.BottomNavigationView
+                        android:id="@+id/detail_selector_select"
+                        android:layout_width="151dp"
+                        android:layout_height="30dp"
+                        android:layout_alignParentEnd="true"
+                        app:menu="@menu/menu_select"
+                        app:itemPaddingTop="10dp"
+                        app:itemPaddingBottom="10dp"
+                        android:background="@drawable/attribute_selector"
+                        app:itemTextAppearanceActive="@style/item_attribute_menu_item_active"
+                        app:itemTextAppearanceInactive="@style/item_attribute_menu_item_inactive"
+                        app:itemActiveIndicatorStyle="@color/blue">
 
-            </RelativeLayout>
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:background="@drawable/attribute_divider"/>
 
-        </LinearLayout>
+                    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="62dp"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/bottom_border">
+
+                    <TextView
+                        android:id="@+id/detail_text_coffee_size"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:textAppearance="@style/coffee_attribute"
+                        android:text="@string/detail_size"/>
+
+                    <com.google.android.material.bottomnavigation.BottomNavigationView
+                        android:id="@+id/detail_selector_size"
+                        android:layout_width="227dp"
+                        android:layout_height="30dp"
+                        android:layout_alignParentEnd="true"
+                        app:menu="@menu/menu_size"
+                        app:itemPaddingTop="10dp"
+                        app:itemPaddingBottom="10dp"
+                        android:background="@drawable/attribute_selector"
+                        app:itemTextAppearanceActive="@style/item_attribute_menu_item_active"
+                        app:itemTextAppearanceInactive="@style/item_attribute_menu_item_inactive"
+                        app:itemActiveIndicatorStyle="@color/blue">
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="start"
+                            android:layout_marginStart="75dp"
+                            android:background="@drawable/attribute_divider"/>
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="end"
+                            android:layout_marginEnd="75dp"
+                            android:background="@drawable/attribute_divider"/>
+
+                    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/detail_ice"
+                    android:layout_width="match_parent"
+                    android:layout_height="62dp"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/detail_text_coffee_ice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:textAppearance="@style/coffee_attribute"
+                        android:text="@string/detail_ice"/>
+
+                    <com.google.android.material.bottomnavigation.BottomNavigationView
+                        android:id="@+id/detail_selector_ice"
+                        android:layout_width="227dp"
+                        android:layout_height="30dp"
+                        android:layout_alignParentEnd="true"
+                        app:menu="@menu/menu_ice"
+                        app:itemPaddingTop="10dp"
+                        app:itemPaddingBottom="10dp"
+                        android:background="@drawable/attribute_selector"
+                        app:itemTextAppearanceActive="@style/item_attribute_menu_item_active"
+                        app:itemTextAppearanceInactive="@style/item_attribute_menu_item_inactive"
+                        app:itemActiveIndicatorStyle="@color/blue">
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="start"
+                            android:layout_marginStart="75dp"
+                            android:background="@drawable/attribute_divider"/>
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="end"
+                            android:layout_marginEnd="75dp"
+                            android:background="@drawable/attribute_divider"/>
+
+                    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

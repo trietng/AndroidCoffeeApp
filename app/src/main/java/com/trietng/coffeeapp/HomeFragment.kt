@@ -1,10 +1,13 @@
 package com.trietng.coffeeapp
 
+import android.animation.ValueAnimator
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Rect
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageButton
+import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.add
@@ -21,6 +24,7 @@ import java.time.LocalDateTime
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -38,7 +42,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         val coffeeSelectionAdapter = CoffeeSelectionAdapter(requireActivity())
         val coffeeSelectionRecyclerView = view.findViewById<RecyclerView>(R.id.menu_box_inner)
         val spanCount = 2
-        val gridLayoutManager = GridLayoutManager(requireContext(), spanCount, GridLayoutManager.HORIZONTAL, false)
+        val gridLayoutManager = GridLayoutManager(requireContext(), spanCount, GridLayoutManager.VERTICAL, false)
         coffeeSelectionRecyclerView.layoutManager = gridLayoutManager
         coffeeSelectionRecyclerView.adapter = coffeeSelectionAdapter
         coffeeViewModel.getAllCoffee.observe(viewLifecycleOwner) {
@@ -47,28 +51,39 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             }
         }
 
-        val calculatedWidth =
-            (requireActivity().resources.getDimension(R.dimen.item_coffee_image_width) +
-                    requireActivity().resources.getDimension(R.dimen.item_coffee_padding) * 2).toInt()
+
+        val spacing = (8 * resources.displayMetrics.density).toInt()
+
         val itemDecoration = object: RecyclerView.ItemDecoration()  {
             override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
                 val position = parent.getChildAdapterPosition(view)
                 val column = position % spanCount
                 val row = position / spanCount
-                if (spacing == 0) spacing = (parent.measuredWidth - 2 * calculatedWidth) // Not sure if it is really efficient
-                outRect.right = spacing
-                outRect.bottom = spacing
-                if (column == spanCount - 1) {
-                    outRect.bottom = 0
+                if (column == 0) {
+                    outRect.right = spacing
                 }
-                if (row == coffeeSelectionAdapter.itemCount / spanCount - 1) {
-                    outRect.right = 0
+                else if (column == spanCount - 1) {
+                    outRect.left = spacing
                 }
-            }
+                else {
+                    outRect.left = spacing
+                    outRect.right = spacing
+                }
+                if (row == 0) {
+                    outRect.bottom = spacing
+                }
+                else if (row == coffeeSelectionAdapter.itemCount / spanCount - 1) {
+                    outRect.top = spacing
+                }
+                else {
+                    outRect.top = spacing
+                    outRect.bottom = spacing
+                }
 
-            private var spacing: Int = 0
+            }
         }
         coffeeSelectionRecyclerView.addItemDecoration(itemDecoration)
+
 
         view.findViewById<ImageButton>(R.id.button_profile).setOnClickListener {
             val intent = Intent(requireContext(), ProfileActivity::class.java)
@@ -81,6 +96,32 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 fullname.text = it
             }
         }
+
+        val menuBoxOuter = view.findViewById<RelativeLayout>(R.id.menu_box_outer)
+        menuBoxOuter.setOnTouchListener (object: OnSwipeTouchListener(requireContext()) {
+            override fun onSwipeUp() {
+                animate(84)
+            }
+
+            override fun onSwipeDown() {
+                animate(264)
+            }
+
+            fun animate(topMarginEndDP: Int) {
+                val layoutParams = menuBoxOuter.layoutParams as RelativeLayout.LayoutParams
+                val topMarginStart = layoutParams.topMargin
+                val topMarginEnd = (topMarginEndDP * resources.displayMetrics.density).toInt()
+                if (topMarginStart == topMarginEnd) return
+                ValueAnimator.ofInt(topMarginStart, topMarginEnd).apply {
+                    duration = 250
+                    addUpdateListener { animation ->
+                        layoutParams.setMargins(0, (animation.animatedValue as Int), 0, 0)
+                        menuBoxOuter.layoutParams = layoutParams
+                    }
+                    start()
+                }
+            }
+        })
     }
 
     override fun onStart() {
