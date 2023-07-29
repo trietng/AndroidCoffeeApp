@@ -22,6 +22,7 @@ class OrderListAdapter :
     override fun onBindViewHolder(holder: OrderViewHolder, position: Int) {
         val order = getItem(position)
         holder.orderId = order.orderId
+        holder.totalAmount = order.totalPrice
         holder.itemOrder.findViewById<TextView>(R.id.item_order_datetime).text = order.orderedTime
         holder.itemOrder.findViewById<TextView>(R.id.item_order_content).text = order.content
         holder.itemOrder.findViewById<TextView>(R.id.item_order_address).text = order.address
@@ -30,6 +31,7 @@ class OrderListAdapter :
 
     class OrderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var orderId: Int = -1
+        var totalAmount: Double = 0.0
         val itemOrder: RelativeLayout = itemView.findViewById(R.id.item_order)
 
         companion object {

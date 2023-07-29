@@ -10,5 +10,6 @@
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:windowBackground">@color/white</item>
         <item name="colorPrimary">@color/blue</item>
+        <item name="colorControlNormal">@color/blue</item>
     </style>
 </resources>

@@ -1,6 +1,8 @@
 package com.trietng.coffeeapp
 
+import android.content.Context
 import android.os.Bundle
+import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
@@ -9,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.trietng.coffeeapp.database.viewmodel.UserViewModel
 import com.trietng.coffeeapp.database.viewmodel.UserViewModelFactory
+
 
 class ProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -75,6 +78,7 @@ class ProfileActivity : AppCompatActivity() {
                 else {
                     editText[i].isEnabled = true
                     editText[i].requestFocus()
+                    showKeyboard(editText[i])
                     editText[i].setSelection(editText[i].text.length)
                     imageView[i].setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_check))
                     // disable other image views
@@ -90,5 +94,11 @@ class ProfileActivity : AppCompatActivity() {
 
     private val userViewModel: UserViewModel by viewModels {
         UserViewModelFactory((application as CoffeeApplication).repository)
+    }
+
+    fun showKeyboard(editText: EditText) {
+        val inputMethodManager =
+            applicationContext.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.showSoftInput(editText, 0)
     }
 }

@@ -53,6 +53,8 @@
                     android:textAppearance="@style/item_attribute"/>
 
                 <EditText
+                    app:backgroundTint="@color/black"
+                    android:textColor="@color/black"
                     android:id="@+id/edit_text_fullname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -102,6 +104,8 @@
                     android:textAppearance="@style/item_attribute"/>
 
                 <EditText
+                    app:backgroundTint="@color/black"
+                    android:textColor="@color/black"
                     android:id="@+id/edit_text_phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -152,6 +156,8 @@
                     android:textAppearance="@style/item_attribute"/>
 
                 <EditText
+                    app:backgroundTint="@color/black"
+                    android:textColor="@color/black"
                     android:id="@+id/edit_text_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -197,10 +203,12 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/profile_email"
+                    android:text="@string/profile_address"
                     android:textAppearance="@style/item_attribute"/>
 
                 <EditText
+                    app:backgroundTint="@color/black"
+                    android:textColor="@color/black"
                     android:id="@+id/edit_text_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

@@ -142,11 +142,10 @@
                         android:layout_alignParentEnd="true"
                         app:menu="@menu/menu_shot"
                         android:background="@drawable/attribute_selector"
-                        app:itemTextAppearanceActive="@style/item_attribute_menu_item_active"
-                        app:itemTextAppearanceInactive="@style/item_attribute_menu_item_inactive"
                         app:itemPaddingTop="10dp"
                         app:itemPaddingBottom="10dp"
-                        app:itemActiveIndicatorStyle="@color/blue">
+                        app:itemActiveIndicatorStyle="@color/blue"
+                        app:itemTextColor="@drawable/bottom_nav_bar">
 
                         <View
                             android:layout_width="1dp"
@@ -181,9 +180,8 @@
                         app:itemPaddingTop="10dp"
                         app:itemPaddingBottom="10dp"
                         android:background="@drawable/attribute_selector"
-                        app:itemTextAppearanceActive="@style/item_attribute_menu_item_active"
-                        app:itemTextAppearanceInactive="@style/item_attribute_menu_item_inactive"
-                        app:itemActiveIndicatorStyle="@color/blue">
+                        app:itemActiveIndicatorStyle="@color/blue"
+                        app:itemTextColor="@drawable/bottom_nav_bar">
 
                         <View
                             android:layout_width="1dp"
@@ -218,9 +216,8 @@
                         app:itemPaddingTop="10dp"
                         app:itemPaddingBottom="10dp"
                         android:background="@drawable/attribute_selector"
-                        app:itemTextAppearanceActive="@style/item_attribute_menu_item_active"
-                        app:itemTextAppearanceInactive="@style/item_attribute_menu_item_inactive"
-                        app:itemActiveIndicatorStyle="@color/blue">
+                        app:itemActiveIndicatorStyle="@color/blue"
+                        app:itemTextColor="@drawable/bottom_nav_bar">
 
                         <View
                             android:layout_width="1dp"
@@ -263,9 +260,8 @@
                         app:itemPaddingTop="10dp"
                         app:itemPaddingBottom="10dp"
                         android:background="@drawable/attribute_selector"
-                        app:itemTextAppearanceActive="@style/item_attribute_menu_item_active"
-                        app:itemTextAppearanceInactive="@style/item_attribute_menu_item_inactive"
-                        app:itemActiveIndicatorStyle="@color/blue">
+                        app:itemActiveIndicatorStyle="@color/blue"
+                        app:itemTextColor="@drawable/bottom_nav_bar">
 
                         <View
                             android:layout_width="1dp"

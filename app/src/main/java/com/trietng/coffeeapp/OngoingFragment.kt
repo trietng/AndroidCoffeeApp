@@ -62,6 +62,11 @@ class OngoingFragment : Fragment(R.layout.fragment_ongoing) {
                         userViewModel.updateNumLoyaltyCup(newNumLoyaltyCup)
                     }
                 }
+                loyaltyViewModel.insert(
+                    "Order #${castResult.orderId}",
+                    (castResult.totalAmount * 0.5).toInt(),
+                    LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))
+                )
                 orderViewModel.setOrderCompleted(castResult.orderId)
             }
         })
